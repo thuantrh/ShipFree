@@ -1,57 +1,35 @@
-import { createServerClient } from "@supabase/ssr";  
-import { cookies } from "next/headers";  
+import { createClient as createClientOriginal } from '@supabase/supabase-js';  
+import { cookies } from 'next/headers';  
 
-export const createClient = () => {  
-  const cookieStore = cookies();  
-
-  // Kiểm tra biến môi trường Supabase  
-  if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {  
-    // Trả về mock client với các phương thức cần thiết  
-    return {  
-      auth: {  
-        getSession: async () => ({  
-          data: { session: null },  
-          error: null  
-        }),  
-        getUser: async () => ({  
-          data: { user: null },  
-          error: null  
-        }),  
-        signOut: async () => ({ error: null }),  
-        signInWithPassword: async () => ({  
-          data: { session: null, user: null },  
-          error: null  
-        }),  
-        signUp: async () => ({  
-          data: { session: null, user: null },  
-          error: null  
-        })  
-      },  
-      from: () => ({  
-        select: () => ({  
-          eq: () => ({  
-            single: () => Promise.resolve({ data: null, error: null }),  
-            data: null,  
-            error: null  
-          })  
-        }),  
-        insert: () => Promise.resolve({ data: null, error: null }),  
-        update: () => Promise.resolve({ data: null, error: null }),  
-        delete: () => Promise.resolve({ data: null, error: null })  
-      })  
-    };  
-  }  
-
-  // Tạo client thật nếu có biến môi trường  
-  return createServerClient(  
-    process.env.NEXT_PUBLIC_SUPABASE_URL,  
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,  
-    {  
-      cookies: {  
-        get(name: string) {  
-          return cookieStore.get(name)?.value;  
-        },  
-      },  
+export const createClient = async () => {  
+  try {  
+    const cookieStore = await cookies();  
+    
+    // Lấy các giá trị từ biến môi trường  
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;  
+    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;  
+    
+    // Kiểm tra URL và key  
+    if (!supabaseUrl || !supabaseKey) {  
+      console.error('Missing Supabase URL or Key');  
+      return null;  
     }  
-  );  
+    
+    // Tạo client trực tiếp với supabase-js  
+    const supabase = createClientOriginal(supabaseUrl, supabaseKey, {  
+      auth: {  
+        persistSession: true,  
+        autoRefreshToken: true,  
+        detectSessionInUrl: true,  
+      },  
+      global: {  
+        fetch: fetch,  
+      },  
+    });  
+    
+    return supabase;  
+  } catch (error) {  
+    console.error('Error creating Supabase client:', error);  
+    return null;  
+  }  
 };

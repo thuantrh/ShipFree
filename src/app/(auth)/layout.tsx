@@ -1,22 +1,18 @@
-import { createClient } from "@/lib/supabase/server";
-import { cookies } from "next/headers";
-import type React from "react";
+'use client';  
+import { useEffect } from 'react';  
 
-export default async function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const cookieStore = cookies();
-  const supabase = createClient();
+export default function AuthLayout({  
+  children,  
+}: {  
+  children: React.ReactNode;  
+}) {  
+  useEffect(() => {  
+    // Logic client-side nếu cần  
+  }, []);  
 
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
-
-  return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
-  );
+  return (  
+    <div className="auth-layout">  
+      {children}  
+    </div>  
+  );  
 }

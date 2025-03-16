@@ -23,6 +23,9 @@ importers:
       '@stripe/stripe-js':
         specifier: ^5.6.0
         version: 5.6.0
+      '@supabase/auth-helpers-nextjs':
+        specifier: ^0.10.0
+        version: 0.10.0(@supabase/supabase-js@2.48.1)
       '@supabase/ssr':
         specifier: ^0.5.2
         version: 0.5.2(@supabase/supabase-js@2.48.1)
@@ -1257,6 +1260,18 @@ packages:
   '@stripe/stripe-js@5.6.0':
     resolution: {integrity: sha512-w8CEY73X/7tw2KKlL3iOk679V9bWseE4GzNz3zlaYxcTjmcmWOathRb0emgo/QQ3eoNzmq68+2Y2gxluAv3xGw==}
     engines: {node: '>=12.16'}
+
+  '@supabase/auth-helpers-nextjs@0.10.0':
+    resolution: {integrity: sha512-2dfOGsM4yZt0oS4TPiE7bD4vf7EVz7NRz/IJrV6vLg0GP7sMUx8wndv2euLGq4BjN9lUCpu6DG/uCC8j+ylwPg==}
+    deprecated: This package is now deprecated - please use the @supabase/ssr package instead.
+    peerDependencies:
+      '@supabase/supabase-js': ^2.39.8
+
+  '@supabase/auth-helpers-shared@0.7.0':
+    resolution: {integrity: sha512-FBFf2ei2R7QC+B/5wWkthMha8Ca2bWHAndN+syfuEUUfufv4mLcAgBCcgNg5nJR8L0gZfyuaxgubtOc9aW3Cpg==}
+    deprecated: This package is now deprecated - please use the @supabase/ssr package instead.
+    peerDependencies:
+      '@supabase/supabase-js': ^2.39.8
 
   '@supabase/auth-js@2.67.3':
     resolution: {integrity: sha512-NJDaW8yXs49xMvWVOkSIr8j46jf+tYHV0wHhrwOaLLMZSFO4g6kKAf+MfzQ2RaD06OCUkUHIzctLAxjTgEVpzw==}
@@ -3787,6 +3802,9 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
+  set-cookie-parser@2.7.1:
+    resolution: {integrity: sha512-IOc8uWeOZgnb3ptbCURJWNjWUPcO3ZnTTdzsurqERrP6nPyv+paC55vJM0LpOlT2ne+Ix+9+CRG1MNLlyZ4GjQ==}
+
   set-function-length@1.2.2:
     resolution: {integrity: sha512-pgRc4hJ4/sNjWCSS9AmnS40x3bNMDTknHgL5UaMBTMyJnU90EgWh1Rz+MC9eFu4BuN/UwZjKQuY/1v3rM7HMfg==}
     engines: {node: '>= 0.4'}
@@ -5135,6 +5153,17 @@ snapshots:
   '@shikijs/vscode-textmate@10.0.1': {}
 
   '@stripe/stripe-js@5.6.0': {}
+
+  '@supabase/auth-helpers-nextjs@0.10.0(@supabase/supabase-js@2.48.1)':
+    dependencies:
+      '@supabase/auth-helpers-shared': 0.7.0(@supabase/supabase-js@2.48.1)
+      '@supabase/supabase-js': 2.48.1
+      set-cookie-parser: 2.7.1
+
+  '@supabase/auth-helpers-shared@0.7.0(@supabase/supabase-js@2.48.1)':
+    dependencies:
+      '@supabase/supabase-js': 2.48.1
+      jose: 4.15.9
 
   '@supabase/auth-js@2.67.3':
     dependencies:
@@ -8473,6 +8502,8 @@ snapshots:
   semver@6.3.1: {}
 
   semver@7.7.1: {}
+
+  set-cookie-parser@2.7.1: {}
 
   set-function-length@1.2.2:
     dependencies:
