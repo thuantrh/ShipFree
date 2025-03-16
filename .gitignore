@@ -43,6 +43,3 @@ next-env.d.ts
 #drizzle 
 /drizzle
 
-.env.production
-.env.example 
-.env.local
