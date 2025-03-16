@@ -43,4 +43,5 @@ next-env.d.ts
 #drizzle 
 /drizzle
 
-.env.production 
+.env.production
+.env.example 

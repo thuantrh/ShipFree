@@ -3,7 +3,7 @@ import CTA from "@/app/(site)/Cta";
 import FAQ from "@/app/(site)/Faq";
 import FeaturedTime from "@/app/(site)/FeaturedTime";
 import Footer from "@/app/(site)/Footer";
-import HeroSection from "@/app/(site)/Hero"; // Ensure this path is correct and the file exists
+import HeroSection from "@/app/(site)/Hero"; 
 import MakerIntro from "@/app/(site)/MakerIntro";
 import Navbar from "@/app/(site)/Navbar";
 import PricingSection from "@/app/(site)/pricing";
@@ -11,7 +11,7 @@ import TestimonialsPage from "@/app/(site)/Testimonials";
 
 // required by Nextra
 export const metadata: Metadata = {
-  title: "ShipFree",
+  title: "DigiGrowth | Data-Driven Marketing Solutions",
 };
 
 export default function Home() {

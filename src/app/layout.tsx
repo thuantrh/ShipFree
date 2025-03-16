@@ -9,23 +9,28 @@ const bricolageGrotesque = Bricolage_Grotesque({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "ShipFree",
-  description:
-    "Open Source Alternative to ShipFast - Launch your startup in days Not in weeks",
-  keywords: [
-    "saas",
-    "boilerplate",
-    "open source",
-    "free",
-    "open source shipfast",
-    "shipfree",
-    "idee8",
-    "made by idee8",
-    "free boilerplate",
-    "github",
-  ],
-};
+export const metadata: Metadata = {  
+  title: "DigiGrowth | Data-Driven Marketing Solutions",  
+  description:  
+    "Transform your online presence with data-driven marketing strategies that deliver real results. Maximize ROI, enhance conversions, and grow your business with our AI-powered platform.",  
+  keywords: [  
+    "digital marketing",  
+    "data-driven marketing",  
+    "marketing analytics",  
+    "ROI optimization",  
+    "campaign performance",  
+    "business growth",  
+    "conversion rate",  
+    "lead generation",  
+    "marketing automation",  
+    "performance tracking",  
+    "digital strategy",  
+    "AI marketing",  
+    "marketing intelligence",  
+    "DigiGrowth",  
+    "online marketing platform",  
+  ],  
+};  
 
 export default function RootLayout({
   children,
@@ -40,3 +45,4 @@ export default function RootLayout({
     </html>
   );
 }
+
